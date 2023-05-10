@@ -41,3 +41,8 @@ docker run -p 8000:8000 ghcr.io/chroma-core/chroma:0.3.22
 8. Run the script `npm run ingest` to 'ingest' and embed your doc.
 
 9. Run the app `npm run dev` to launch the local dev environment, and then type a question in the chat interface.
+
+## Sample Questions
+
+- What did the president say about Justice Breyer?
+- Was that nice?
