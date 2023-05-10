@@ -1,22 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
-First, run the development server:
+1. Make sure you're running at least Node version 18. You can run `node -v` to check your current Node version.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) for your platform.
+
+1. Clone the repo or download the ZIP
+
+```
+git clone [github https url]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Install packages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm i
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Set up your `.env` file
+
+- Copy `.env.example` into `.env`
+- Your `.env` file should look like this:
+
+```
+OPENAI_API_KEY=
+COLLECTION_NAME=
+
+```
+
+- Visit [openai](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key) to retrieve API keys and insert into your `.env` file.
+- Choose a collection name where you'd like to store your embeddings in Chroma. This collection will later be used for queries and retrieval.
+
+1. In a new terminal window, run Chroma in the Docker container:
+
+```
+docker run -p 8000:8000 ghcr.io/chroma-core/chroma:0.3.22
+```
+
+1. Inside `docs` folder is the document we want to 'ingest`.
+
+1. Run the script `npm run ingest` to 'ingest' and embed your doc.
+
+1. Run the app `npm run dev` to launch the local dev environment, and then type a question in the chat interface.
 
 ## Learn More
 
