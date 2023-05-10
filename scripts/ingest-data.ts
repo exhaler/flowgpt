@@ -5,7 +5,7 @@ import * as fs from 'fs';
 
 /* Name of directory to retrieve your files from */
 const filePath = 'docs/state_of_the_union.txt';
-const collectionName = 'FlowGPT';
+const collectionName = process.env.COLLECTION_NAME ?? '';
 
 export const run = async () => {
   try {
@@ -18,15 +18,11 @@ export const run = async () => {
     });
     const docs = await textSplitter.createDocuments([text]);
 
-    // Create the vectorstore
+    // Create the vectorStore
     console.log('Creating vector store...');
-    const vectorStore = await Chroma.fromDocuments(
-      docs,
-      new OpenAIEmbeddings(),
-      {
-        collectionName,
-      },
-    );
+    await Chroma.fromDocuments(docs, new OpenAIEmbeddings(), {
+      collectionName,
+    });
   } catch (error) {
     console.error({ error });
     throw new Error('Failed to ingest your data');

@@ -1,0 +1,203 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.cloudForm {
+  position: relative;
+}
+
+.textarea {
+  position: relative;
+  resize: none;
+  font-size: 1.1rem;
+  padding: 1rem 2rem 1rem 2rem;
+  width: 75vw;
+  border-radius: 0.5rem;
+  border: 1px solid #d9d9e3;
+  background: #ffffff;
+  color: #000;
+  outline: none;
+}
+
+.textarea:disabled {
+  opacity: 0.5;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #6b7280;
+  box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.5);
+}
+
+.textarea::placeholder {
+  color: #6b7280;
+}
+
+.generateButton {
+  position: absolute;
+  top: 0.87rem;
+  right: 1rem;
+  color: rgb(165, 162, 162);
+  background: none;
+  padding: 0.3rem;
+  border: none;
+  display: flex;
+}
+
+.loadingWheel {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.25rem;
+}
+
+.svgIcon {
+  transform: rotate(90deg);
+  width: 1.2em;
+  height: 1.2em;
+  fill: currentColor;
+}
+
+.generateButton:hover {
+  background: #e4575726;
+  border-radius: 0.2rem;
+}
+
+.generateButton:disabled {
+  opacity: 0.9;
+  cursor: not-allowed;
+  background: none;
+}
+
+.messageList {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  border-radius: 0.5rem;
+}
+
+.messageListLoading {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.userMessage {
+  background: #ffffff;
+  padding: 1.5rem;
+  color: #000;
+}
+
+.userMessageWaiting {
+  padding: 1.5rem;
+  color: #000;
+  background: linear-gradient(to left, #07080938, #1a1c2024, #07080936);
+  background-size: 200% 200%;
+  background-position: -100% 0;
+  animation: loading-gradient 2s ease-in-out infinite;
+  animation-direction: alternate;
+  animation-name: loading-gradient;
+}
+
+@keyframes loading-gradient {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+.apiMessage {
+  background: #f9fafb;
+  padding: 1.5rem;
+  color: #000;
+  animation: fadein 0.5s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.apiMessage,
+.userMessage,
+.userMessageWaiting {
+  display: flex;
+}
+
+.botAnswer {
+  line-height: 1.75;
+}
+
+.botIcon,
+.userIcon {
+  margin-right: 1rem;
+  border-radius: 0.1rem;
+  height: 100%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 1rem 0;
+  flex-direction: column;
+}
+
+.cloud {
+  width: 75vw;
+  height: 65vh;
+  background: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid #d9d9e3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pointsNormal {
+  width: 90%;
+  height: 90%;
+}
+
+.pointsDim {
+  width: 90%;
+  height: 90%;
+  opacity: 0.25;
+}
+
+/* Mobile optimization */
+@media (max-width: 600px) {
+  .main {
+    padding: 1rem;
+    max-height: 90vh;
+  }
+
+  .cloud {
+    width: 22rem;
+    height: 28rem;
+  }
+  .textarea {
+    width: 22rem;
+  }
+  .topNav {
+    border: 1px solid black;
+    align-items: center;
+    padding: 0.85rem 0.75rem 0.85rem 0.75rem;
+  }
+
+  .navLogo {
+    font-size: 1.25rem;
+    width: 20rem;
+  }
+}
